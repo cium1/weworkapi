@@ -684,7 +684,7 @@ class CorpAPI extends API
      *
      * @param $jobId
      *
-     * @return \BatchJobResult
+     * @return struct\BatchJobResult
      * @throws HttpError
      * @throws InternalError
      * @throws NetWorkError
@@ -951,7 +951,7 @@ class CorpAPI extends API
      * @param $type
      *
      * @return mixed
-     * @throws Exception
+     * @throws \Exception
      */
     public function MediaUploadByBuffer($buffer, $type)
     {
@@ -1450,7 +1450,7 @@ class CorpAPI extends API
      *
      * @return false|string
      * @throws ParameterError
-     * @throws Exception
+     * @throws \Exception
      */
     static private function WriteTmpFile($buffer)
     {
@@ -1485,37 +1485,5 @@ class CorpAPI extends API
             throw $ex;
         }
         return $tmpPath;
-    }
-
-    /**
-     * @return string
-     */
-    protected function GetSuiteAccessToken()
-    {
-        // TODO: Implement GetSuiteAccessToken() method.
-    }
-
-    /**
-     * @return string
-     */
-    protected function RefreshSuiteAccessToken()
-    {
-        // TODO: Implement RefreshSuiteAccessToken() method.
-    }
-
-    /**
-     * @return string
-     */
-    protected function GetProviderAccessToken()
-    {
-        // TODO: Implement GetProviderAccessToken() method.
-    }
-
-    /**
-     * @return string
-     */
-    protected function RefreshProviderAccessToken()
-    {
-        // TODO: Implement RefreshProviderAccessToken() method.
     }
 }

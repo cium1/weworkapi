@@ -2,6 +2,7 @@
 
 namespace Cium\WeWorkApi\api\struct;
 
+use Cium\WeWorkApi\utils\ParameterError;
 use Cium\WeWorkApi\utils\Utils;
 
 class CallBack
@@ -37,7 +38,7 @@ class Batch
     /**
      * @param $batchJobArgs
      *
-     * @throws \Cium\WeWorkApi\utils\ParameterError
+     * @throws ParameterError
      */
     static public function CheckBatchJobArgs($batchJobArgs)
     {
