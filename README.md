@@ -4,7 +4,7 @@
 # composer require cium/weworkapi
 
 # Director
-
+```
 ├── api // API 接口
 │   ├── datastructure // API接口需要使用到的一些数据结构
 │   ├── README.md
@@ -13,3 +13,4 @@
 ├── config.php
 ├── README.md
 └── utils // 一些基础方法
+```
