@@ -7,8 +7,6 @@
 namespace Cium\WeWorkApi\callback;
 
 
-use PKCS7Encoder;
-
 /**
  * Prpcrypt class
  *

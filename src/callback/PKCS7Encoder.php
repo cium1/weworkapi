@@ -1,5 +1,6 @@
 <?php
 
+namespace Cium\WeWorkApi\callback;
 
 /**
  * PKCS7Encoder class
