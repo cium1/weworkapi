@@ -55,6 +55,7 @@ class PKCS7Encoder
 
 }
 
+namespace Cium\WeWorkApi\callback;
 /**
  * Prpcrypt class
  *
