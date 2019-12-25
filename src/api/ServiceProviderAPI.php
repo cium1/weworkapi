@@ -2,7 +2,7 @@
 /*
  * Copyright (C) 2017 All rights reserved.
  *   
- * @File ServiceProviderAPI.class.php
+ * @File ServiceProviderAPI.php
  * @Brief : 为服务商开放的接口, 使用服务商的token
  * @Author abelzhu, abelzhu@tencent.com
  * @Version 1.0
