@@ -14,5 +14,9 @@
     }
   },
   "require": {
+    "ext-libxml": "*",
+    "ext-json": "*",
+    "ext-simplexml": "*",
+    "ext-dom": "*"
   }
 }
