@@ -2,12 +2,12 @@
 
 namespace Cium\WeWorkApi\api;
 
-use Cium\WeWorkApi\utils\HttpError;
+use Cium\WeWorkApi\utils\error\HttpError;
 use Cium\WeWorkApi\utils\HttpUtils;
-use Cium\WeWorkApi\utils\InternalError;
-use Cium\WeWorkApi\utils\NetWorkError;
-use Cium\WeWorkApi\utils\ParameterError;
-use Cium\WeWorkApi\utils\QyApiError;
+use Cium\WeWorkApi\utils\error\InternalError;
+use Cium\WeWorkApi\utils\error\NetWorkError;
+use Cium\WeWorkApi\utils\error\ParameterError;
+use Cium\WeWorkApi\utils\error\QyApiError;
 use Cium\WeWorkApi\utils\Utils;
 
 abstract class API

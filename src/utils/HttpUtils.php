@@ -2,6 +2,10 @@
 
 namespace Cium\WeWorkApi\utils;
 
+use Cium\WeWorkApi\utils\error\HttpError;
+use Cium\WeWorkApi\utils\error\InternalError;
+use Cium\WeWorkApi\utils\error\NetWorkError;
+
 class HttpUtils
 {
     //
@@ -121,6 +125,13 @@ class HttpUtils
         }
     }
 
+    /**
+     * @param $ch
+     *
+     * @return bool|string
+     * @throws HttpError
+     * @throws NetWorkError
+     */
     static private function __exec($ch)
     {
         $output = curl_exec($ch);
@@ -138,6 +149,9 @@ class HttpUtils
         return $output;
     }
 
+    /**
+     * @throws InternalError
+     */
     static private function __checkDeps()
     {
         if (!function_exists("curl_init")) {

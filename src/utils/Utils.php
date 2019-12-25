@@ -2,26 +2,50 @@
 
 namespace Cium\WeWorkApi\utils;
 
+use Cium\WeWorkApi\utils\error\ParameterError;
+
 class Utils
 {
-
+    /**
+     * @param $var
+     *
+     * @return bool
+     */
     static public function notEmptyStr($var)
     {
         return is_string($var) && ($var != "");
     }
 
+    /**
+     * @param $var
+     * @param $name
+     *
+     * @throws ParameterError
+     */
     static public function checkNotEmptyStr($var, $name)
     {
         if (!self::notEmptyStr($var))
             throw new ParameterError($name . " can not be empty string");
     }
 
+    /**
+     * @param $var
+     * @param $name
+     *
+     * @throws ParameterError
+     */
     static public function checkIsUInt($var, $name)
     {
         if (!(is_int($var) && $var >= 0))
             throw new ParameterError($name . " need unsigned int");
     }
 
+    /**
+     * @param $var
+     * @param $name
+     *
+     * @throws ParameterError
+     */
     static public function checkNotEmptyArray($var, $name)
     {
         if (!is_array($var) || count($var) == 0) {
@@ -29,6 +53,11 @@ class Utils
         }
     }
 
+    /**
+     * @param $var
+     * @param $name
+     * @param $args
+     */
     static public function setIfNotNull($var, $name, &$args)
     {
         if (!is_null($var)) {
@@ -36,6 +65,13 @@ class Utils
         }
     }
 
+    /**
+     * @param      $array
+     * @param      $key
+     * @param null $default
+     *
+     * @return mixed|null
+     */
     static public function arrayGet($array, $key, $default = null)
     {
         if (array_key_exists($key, $array))
@@ -53,7 +89,7 @@ class Utils
     static function Array2Object($arr)
     {
         if (gettype($arr) != 'array') {
-            return;
+            return null;
         }
         foreach ($arr as $k => $v) {
             if (gettype($v) == 'array' || getType($v) == 'object') {

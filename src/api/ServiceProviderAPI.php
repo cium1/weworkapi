@@ -17,12 +17,12 @@ use Cium\WeWorkApi\api\struct\GetRegisterCodeReq;
 use Cium\WeWorkApi\api\struct\GetRegisterInfoRsp;
 use Cium\WeWorkApi\api\struct\SetAgentScopeReq;
 use Cium\WeWorkApi\api\struct\SetAgentScopeRsp;
-use Cium\WeWorkApi\utils\HttpError;
+use Cium\WeWorkApi\utils\error\HttpError;
 use Cium\WeWorkApi\utils\HttpUtils;
-use Cium\WeWorkApi\utils\InternalError;
-use Cium\WeWorkApi\utils\NetWorkError;
-use Cium\WeWorkApi\utils\ParameterError;
-use Cium\WeWorkApi\utils\QyApiError;
+use Cium\WeWorkApi\utils\error\InternalError;
+use Cium\WeWorkApi\utils\error\NetWorkError;
+use Cium\WeWorkApi\utils\error\ParameterError;
+use Cium\WeWorkApi\utils\error\QyApiError;
 use Cium\WeWorkApi\utils\Utils;
 
 class ServiceProviderAPI extends API

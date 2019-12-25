@@ -2,8 +2,8 @@
 
 namespace Cium\WeWorkApi\api\struct;
 
-use Cium\WeWorkApi\utils\ParameterError;
-use Cium\WeWorkApi\utils\QyApiError;
+use Cium\WeWorkApi\utils\error\ParameterError;
+use Cium\WeWorkApi\utils\error\QyApiError;
 use Cium\WeWorkApi\utils\Utils;
 
 class ExtattrItem
