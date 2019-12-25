@@ -51,44 +51,6 @@ class XMLParse
 </xml>";
         return sprintf($format, $encrypt, $signature, $timestamp, $nonce);
     }
-
-    /**
-     * 数组转XML
-     *
-     * @param string $rootName
-     * @param array  $arr
-     *
-     * @return string
-     */
-    public function Array2Xml($rootName, $arr)
-    {
-        $xml = "<" . $rootName . ">";
-        foreach ($arr as $key => $val) {
-            if (is_numeric($val)) {
-                $xml .= "<" . $key . ">" . $val . "</" . $key . ">";
-            } else {
-                $xml .= "<" . $key . "><![CDATA[" . $val . "]]></" . $key . ">";
-            }
-        }
-        $xml .= "</" . $rootName . ">";
-        return $xml;
-    }
-
-    /**
-     * 将XML转为array
-     *
-     * @param string $xml
-     *
-     * @return mixed
-     */
-    public function Xml2Array($xml)
-    {
-        //禁止引用外部xml实体
-        libxml_disable_entity_loader(true);
-        $values = json_decode(json_encode(simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA)), true);
-        return $values;
-    }
-
 }
 
 //

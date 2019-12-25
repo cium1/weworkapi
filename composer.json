@@ -17,6 +17,10 @@
     "ext-libxml": "*",
     "ext-json": "*",
     "ext-simplexml": "*",
-    "ext-dom": "*"
+    "ext-dom": "*",
+    "ext-curl": "*",
+    "ext-openssl": "*",
+    "ext-mcrypt": "*",
+    "ext-redis": "*"
   }
 }
