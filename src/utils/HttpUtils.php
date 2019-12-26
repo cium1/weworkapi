@@ -11,6 +11,13 @@ class HttpUtils
     //
     // public:
     //
+    /**
+     * 制作网址
+     *
+     * @param $queryArgs
+     *
+     * @return string
+     */
     static public function MakeUrl($queryArgs)
     {
         $base = "https://qyapi.weixin.qq.com";
@@ -19,6 +26,13 @@ class HttpUtils
         return $base . "/" . $queryArgs;
     }
 
+    /**
+     * Array to Json
+     *
+     * @param $arr
+     *
+     * @return string
+     */
     static public function Array2Json($arr)
     {
         $parts = array();
@@ -63,7 +77,7 @@ class HttpUtils
 
 
     /**
-     * http get
+     * http获取
      *
      * @param string $url
      *
@@ -116,6 +130,12 @@ class HttpUtils
     // private:
     //
 
+    /**
+     * 设置SSL选项
+     *
+     * @param $ch
+     * @param $url
+     */
     static private function __setSSLOpts($ch, $url)
     {
         if (stripos($url, "https://") !== false) {
@@ -126,6 +146,8 @@ class HttpUtils
     }
 
     /**
+     * 执行
+     *
      * @param $ch
      *
      * @return bool|string
@@ -150,6 +172,8 @@ class HttpUtils
     }
 
     /**
+     * 检查Deps
+     *
      * @throws InternalError
      */
     static private function __checkDeps()

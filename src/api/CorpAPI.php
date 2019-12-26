@@ -18,6 +18,7 @@ use Cium\WeWorkApi\api\struct\batch\Batch;
 use Cium\WeWorkApi\api\struct\batch\BatchJobArgs;
 use Cium\WeWorkApi\api\struct\CheckinData\CheckinDataList;
 use Cium\WeWorkApi\api\struct\CheckinOption\CheckinOption;
+use Cium\WeWorkApi\api\struct\ExternalContact\WelcomeMsg;
 use Cium\WeWorkApi\api\struct\invoice\BatchGetInvoiceInfoReq;
 use Cium\WeWorkApi\api\struct\invoice\BatchUpdateInvoiceStatusReq;
 use Cium\WeWorkApi\api\struct\menu\Menu;
@@ -283,7 +284,7 @@ class CorpAPI extends API
         } else {
             $args = array("userid" => $userid, "agentid" => $agentid);
         }
-        self::_HttpCall(self::USERID_TO_OPENID, 'POST', $args);
+        self::_HttpCall(self::USER_ID_TO_OPENID, 'POST', $args);
         $openId = Utils::arrayGet($this->rspJson, "openid");
         $appId = Utils::arrayGet($this->rspJson, "appid");
     }
@@ -307,7 +308,7 @@ class CorpAPI extends API
     {
         Utils::checkNotEmptyStr($openId, "openid");
         $args = array("openid" => $openId);
-        self::_HttpCall(self::OPENID_TO_USERID, 'POST', $args);
+        self::_HttpCall(self::OPENID_TO_USER_ID, 'POST', $args);
         $userid = Utils::arrayGet($this->rspJson, "userid");
     }
 
@@ -1433,6 +1434,28 @@ class CorpAPI extends API
         $args = Utils::Object2Array($BatchGetInvoiceInfoReq);
         self::_HttpCall(self::BATCH_GET_INVOICE_INFO, 'POST', $args);
         return Utils::Array2Object($this->rspJson);
+    }
+
+    // ---------------------- 外部联系人 ----------------------------------------
+
+    /**
+     * @brief ExternalContactSendNewCustomerGreeting : 发送新客户欢迎语
+     *
+     * @link  https://work.weixin.qq.com/api/doc/90000/90135/92137
+     *
+     * @param WelcomeMsg $welcomeMsg
+     *
+     * @throws HttpError
+     * @throws InternalError
+     * @throws NetWorkError
+     * @throws ParameterError
+     * @throws QyApiError
+     */
+    public function ExternalContactSendNewCustomerGreeting(WelcomeMsg $welcomeMsg)
+    {
+        WelcomeMsg::checkArgs($welcomeMsg);
+        $args = Utils::Object2Array($welcomeMsg);
+        self::_HttpCall(self::EXTERNAL_CONTACT_SEND_WELCOME_MSG, 'POST', $args);
     }
 
     // ------------------------- private --------------------------------------

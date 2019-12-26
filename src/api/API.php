@@ -13,6 +13,7 @@ use Cium\WeWorkApi\utils\Utils;
 abstract class API
 {
     public $rspJson = null;
+
     public $rspRawStr = null;
 
     const USER_CREATE = '/cgi-bin/user/create?access_token=ACCESS_TOKEN';
@@ -22,8 +23,8 @@ abstract class API
     const USER_BATCH_DELETE = '/cgi-bin/user/batchdelete?access_token=ACCESS_TOKEN';
     const USER_SIMPLE_LIST = '/cgi-bin/user/simplelist?access_token=ACCESS_TOKEN';
     const USER_LIST = '/cgi-bin/user/list?access_token=ACCESS_TOKEN';
-    const USERID_TO_OPENID = '/cgi-bin/user/convert_to_openid?access_token=ACCESS_TOKEN';
-    const OPENID_TO_USERID = '/cgi-bin/user/convert_to_userid?access_token=ACCESS_TOKEN';
+    const USER_ID_TO_OPENID = '/cgi-bin/user/convert_to_openid?access_token=ACCESS_TOKEN';
+    const OPENID_TO_USER_ID = '/cgi-bin/user/convert_to_userid?access_token=ACCESS_TOKEN';
     const USER_AUTH_SUCCESS = '/cgi-bin/user/authsucc?access_token=ACCESS_TOKEN';
 
     const DEPARTMENT_CREATE = '/cgi-bin/department/create?access_token=ACCESS_TOKEN';
@@ -84,7 +85,11 @@ abstract class API
     const SET_AGENT_SCOPE = '/cgi-bin/agent/set_scope';
     const SET_CONTACT_SYNC_SUCCESS = '/cgi-bin/sync/contact_sync_success';
 
+    const EXTERNAL_CONTACT_SEND_WELCOME_MSG = '/cgi-bin/externalcontact/send_welcome_msg?access_token=ACCESS_TOKEN';
+
     /**
+     * 获取访问令牌
+     *
      * @return string
      */
     protected function GetAccessToken()
@@ -92,6 +97,8 @@ abstract class API
     }
 
     /**
+     * 刷新访问令牌
+     *
      * @return string
      */
     protected function RefreshAccessToken()
@@ -99,6 +106,8 @@ abstract class API
     }
 
     /**
+     * 获取套件访问令牌
+     *
      * @return string
      */
     protected function GetSuiteAccessToken()
@@ -106,6 +115,8 @@ abstract class API
     }
 
     /**
+     * 刷新套件访问令牌
+     *
      * @return string
      */
     protected function RefreshSuiteAccessToken()
@@ -113,6 +124,8 @@ abstract class API
     }
 
     /**
+     * 获取提供商访问令牌
+     *
      * @return string
      */
     protected function GetProviderAccessToken()
@@ -120,6 +133,8 @@ abstract class API
     }
 
     /**
+     * 刷新提供商访问令牌
+     *
      * @return string
      */
     protected function RefreshProviderAccessToken()
@@ -128,6 +143,8 @@ abstract class API
 
 
     /**
+     * Http呼叫
+     *
      * @param $url
      * @param $method
      * @param $args
@@ -164,6 +181,8 @@ abstract class API
     }
 
     /**
+     * Http获取解析给Json
+     *
      * @param      $url
      * @param bool $refreshTokenWhenExpired
      *
@@ -226,6 +245,8 @@ abstract class API
     }
 
     /**
+     * Http发布解析到Json
+     *
      * @param      $url
      * @param      $args
      * @param bool $refreshTokenWhenExpired
@@ -299,6 +320,8 @@ abstract class API
 
 
     /**
+     * 检查错误代码
+     *
      * @throws ParameterError
      * @throws QyApiError
      */
@@ -316,8 +339,7 @@ abstract class API
         }
         $errCode = $rsp["errcode"];
         if (!is_int($errCode))
-            throw new QyApiError(
-                "invalid errcode type " . gettype($errCode) . ":" . $raw);
+            throw new QyApiError("invalid errcode type " . gettype($errCode) . ":" . $raw);
         if ($errCode != 0)
             throw new QyApiError("response error:" . $raw);
     }
