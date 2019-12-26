@@ -13,10 +13,11 @@
 namespace Cium\WeWorkApi\api;
 
 
-use Cium\WeWorkApi\api\struct\GetRegisterCodeReq;
-use Cium\WeWorkApi\api\struct\GetRegisterInfoRsp;
-use Cium\WeWorkApi\api\struct\SetAgentScopeReq;
-use Cium\WeWorkApi\api\struct\SetAgentScopeRsp;
+use Cium\WeWorkApi\api\struct\ServiceProvider\GetLoginInfoRsp;
+use Cium\WeWorkApi\api\struct\ServiceProvider\GetRegisterCodeReq;
+use Cium\WeWorkApi\api\struct\ServiceProvider\GetRegisterInfoRsp;
+use Cium\WeWorkApi\api\struct\ServiceProvider\SetAgentScopeReq;
+use Cium\WeWorkApi\api\struct\ServiceProvider\SetAgentScopeRsp;
 use Cium\WeWorkApi\utils\error\HttpError;
 use Cium\WeWorkApi\utils\HttpUtils;
 use Cium\WeWorkApi\utils\error\InternalError;

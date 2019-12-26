@@ -13,23 +13,23 @@
 namespace Cium\WeWorkApi\api;
 
 use Cium\WeWorkApi\api\struct\Agent;
-use Cium\WeWorkApi\api\struct\ApprovalDataList;
-use Cium\WeWorkApi\api\struct\Batch;
-use Cium\WeWorkApi\api\struct\BatchGetInvoiceInfoReq;
-use Cium\WeWorkApi\api\struct\BatchJobArgs;
-use Cium\WeWorkApi\api\struct\BatchUpdateInvoiceStatusReq;
-use Cium\WeWorkApi\api\struct\CheckinDataList;
-use Cium\WeWorkApi\api\struct\CheckinOption;
-use Cium\WeWorkApi\api\struct\Menu;
-use Cium\WeWorkApi\api\struct\Message;
-use Cium\WeWorkApi\api\struct\PayWwSptrans2PocketReq;
-use Cium\WeWorkApi\api\struct\QueryWorkWxRedpackReq;
-use Cium\WeWorkApi\api\struct\QueryWwSptrans2PocketReq;
-use Cium\WeWorkApi\api\struct\SendWorkWxRedpackReq;
-use Cium\WeWorkApi\api\struct\Tag;
-use Cium\WeWorkApi\api\struct\User;
-use Cium\WeWorkApi\api\struct\UserDetailByUserTicket;
-use Cium\WeWorkApi\api\struct\UserInfoByCode;
+use Cium\WeWorkApi\api\struct\ApprovalData\ApprovalDataList;
+use Cium\WeWorkApi\api\struct\batch\Batch;
+use Cium\WeWorkApi\api\struct\batch\BatchJobArgs;
+use Cium\WeWorkApi\api\struct\CheckinData\CheckinDataList;
+use Cium\WeWorkApi\api\struct\CheckinOption\CheckinOption;
+use Cium\WeWorkApi\api\struct\invoice\BatchGetInvoiceInfoReq;
+use Cium\WeWorkApi\api\struct\invoice\BatchUpdateInvoiceStatusReq;
+use Cium\WeWorkApi\api\struct\menu\Menu;
+use Cium\WeWorkApi\api\struct\message\Message;
+use Cium\WeWorkApi\api\struct\oauth\UserDetailByUserTicket;
+use Cium\WeWorkApi\api\struct\oauth\UserInfoByCode;
+use Cium\WeWorkApi\api\struct\pay\PayWwSptrans2PocketReq;
+use Cium\WeWorkApi\api\struct\pay\QueryWorkWxRedpackReq;
+use Cium\WeWorkApi\api\struct\pay\QueryWwSptrans2PocketReq;
+use Cium\WeWorkApi\api\struct\pay\SendWorkWxRedpackReq;
+use Cium\WeWorkApi\api\struct\tag\Tag;
+use Cium\WeWorkApi\api\struct\user\User;
 use Cium\WeWorkApi\utils\error\HttpError;
 use Cium\WeWorkApi\utils\HttpUtils;
 use Cium\WeWorkApi\utils\error\InternalError;
@@ -684,7 +684,7 @@ class CorpAPI extends API
      *
      * @param $jobId
      *
-     * @return struct\BatchJobResult
+     * @return struct\batch\BatchJobResult
      * @throws HttpError
      * @throws InternalError
      * @throws NetWorkError
@@ -779,14 +779,6 @@ class CorpAPI extends API
      * @brief  AgentList : 获取应用列表
      *
      * @link   https://work.weixin.qq.com/api/doc#11214
-     * @return mixed
-     * @throws HttpError
-     * @throws InternalError
-     * @throws NetWorkError
-     * @throws ParameterError
-     * @throws QyApiError
-     */
-    /**
      * @return array
      * @throws HttpError
      * @throws InternalError

@@ -12,12 +12,12 @@
 
 namespace Cium\WeWorkApi\api;
 
-use Cium\WeWorkApi\api\struct\GetAdminListRsp;
-use Cium\WeWorkApi\api\struct\GetAuthInfoRsp;
-use Cium\WeWorkApi\api\struct\GetPermanentCodeRsp;
-use Cium\WeWorkApi\api\struct\GetUserDetailBy3rdRsp;
-use Cium\WeWorkApi\api\struct\GetUserinfoBy3rdRsp;
-use Cium\WeWorkApi\api\struct\SetSessionInfoReq;
+use Cium\WeWorkApi\api\struct\ServiceCorp\GetAdminListRsp;
+use Cium\WeWorkApi\api\struct\ServiceCorp\GetAuthInfoRsp;
+use Cium\WeWorkApi\api\struct\ServiceCorp\GetPermanentCodeRsp;
+use Cium\WeWorkApi\api\struct\ServiceCorp\GetUserDetailBy3rdRsp;
+use Cium\WeWorkApi\api\struct\ServiceCorp\GetUserinfoBy3rdRsp;
+use Cium\WeWorkApi\api\struct\ServiceCorp\SetSessionInfoReq;
 use Cium\WeWorkApi\utils\error\HttpError;
 use Cium\WeWorkApi\utils\HttpUtils;
 use Cium\WeWorkApi\utils\error\InternalError;
