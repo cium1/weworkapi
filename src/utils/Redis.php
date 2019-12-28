@@ -30,7 +30,7 @@ class Redis
             $this->config = $config;
         }
         $this->redis = new \Redis();
-        $this->redis->connect($this->config['host'], $this->redis['port'], $this->config['timeout']);
+        $this->redis->connect($this->config['host'], $this->config['port'], $this->config['timeout']);
         $this->redis->auth($this->config['password']);
     }
 
