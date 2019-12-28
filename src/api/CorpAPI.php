@@ -38,6 +38,7 @@ use Cium\WeWorkApi\utils\error\NetWorkError;
 use Cium\WeWorkApi\utils\error\ParameterError;
 use Cium\WeWorkApi\utils\error\QyApiError;
 use Cium\WeWorkApi\utils\error\SysError;
+use Cium\WeWorkApi\utils\Redis;
 use Cium\WeWorkApi\utils\Utils;
 use Cium\WeWorkApi\api\struct\Department;
 
@@ -46,6 +47,7 @@ class CorpAPI extends API
 {
     private $corpId = null;
     private $secret = null;
+    private $redis = null;
     protected $accessToken = null;
 
     /**
@@ -54,18 +56,20 @@ class CorpAPI extends API
      * @brief __construct : 构造函数，
      * @note  企业进行自定义开发调用, 请传参 corpid + secret, 不用关心accesstoken，本类会自动获取并刷新
      *
-     * @param null $corpId
-     * @param null $secret
+     * @param null              $corpId
+     * @param null              $secret
+     * @param struct\Redis|null $redis
      *
      * @throws ParameterError
      */
-    public function __construct($corpId = null, $secret = null)
+    public function __construct($corpId = null, $secret = null, \Cium\WeWorkApi\api\struct\Redis $redis = null)
     {
         Utils::checkNotEmptyStr($corpId, "corpid");
         Utils::checkNotEmptyStr($secret, "secret");
 
         $this->corpId = $corpId;
         $this->secret = $secret;
+        $this->redis = $redis;
     }
 
 
@@ -98,14 +102,23 @@ class CorpAPI extends API
      */
     protected function RefreshAccessToken()
     {
-        if (!Utils::notEmptyStr($this->corpId) || !Utils::notEmptyStr($this->secret))
+        if (!Utils::notEmptyStr($this->corpId) || !Utils::notEmptyStr($this->secret)) {
             throw new ParameterError("invalid corpid or secret");
-
-        $url = HttpUtils::MakeUrl("/cgi-bin/gettoken?corpid={$this->corpId}&corpsecret={$this->secret}");
-        $this->_HttpGetParseToJson($url, false);
-        $this->_CheckErrCode();
-
-        $this->accessToken = $this->rspJson["access_token"];
+        }
+        $redis = Redis::getInstance([
+            'host'     => $this->redis->host,
+            'port'     => $this->redis->port,
+            'timeout'  => $this->redis->timeout,
+            'password' => $this->redis->password,
+        ]);
+        if (!$redis->exists($this->corpId)) {
+            $url = HttpUtils::MakeUrl("/cgi-bin/gettoken?corpid={$this->corpId}&corpsecret={$this->secret}");
+            $this->_HttpGetParseToJson($url, false);
+            $this->_CheckErrCode();
+            $redis->set($this->corpId, $this->rspJson["access_token"], $this->rspJson['expires_in']);
+        }
+        $this->accessToken = $redis->get($this->corpId);
+        //$this->accessToken = $this->rspJson["access_token"];
     }
 
     // ------------------------- 成员管理 -------------------------------------
