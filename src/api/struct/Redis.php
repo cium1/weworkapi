@@ -13,4 +13,12 @@ class Redis
     public $port = '6379';
     public $password = '';
     public $timeout = 0;
+    
+    //实例化的时候只需要传入redis的配置的数组
+    public function __construct($config=[]){
+		$this->host=$config['host']??$this->host;
+		$this->port=$config['port']??$this->port;
+		$this->password=$config['password']??$this->password;
+		$this->timeout=$config['timeout']??$this->timeout;
+	}
 }
