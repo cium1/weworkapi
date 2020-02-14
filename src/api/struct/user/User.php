@@ -14,21 +14,27 @@ use Cium\WeWorkApi\utils\Utils;
 class User
 {
     public $userid = null;          // string
+    public $newuserid = null;          // string
     public $name = null;            // string
+    public $alias = null;            // string
     public $english_name = null;    // string
     public $mobile = null;          // string
+    public $qr_code = null;          // string
     public $department = null;      // uint array
     public $order = null;           // uint array
     public $position = null;        // string
     public $gender = null;          // uint [bug]
     public $email = null;           // string
+    public $address = null;           // string
     public $telephone = null;       // string
     public $isleader = null;        // uint
-    public $avatar_mediaid = null;  // string
+    public $is_leader_in_dept = null;        // uint
+    public $avatar = null;  		// string
+    public $thumb_avatar = null;  	// string
     public $enable = null;          // uint
     public $extattr = null;         // ExtattrList
     public $status = null;          // uint, 激活状态: 1=已激活，2=已禁用，4=未激活。已激活代表已激活企业微信或已关注微信插件。未激活代表既未激活企业微信又未关注微信插件。
-
+	
     /**
      * @param $arr
      *
@@ -39,17 +45,23 @@ class User
         $user = new User();
 
         $user->userid = Utils::arrayGet($arr, "userid");
+        $user->newuserid = Utils::arrayGet($arr, "newuserid");
         $user->name = Utils::arrayGet($arr, "name");
+        $user->alias = Utils::arrayGet($arr, "alias");
         $user->english_name = Utils::arrayGet($arr, "english_name");
         $user->mobile = Utils::arrayGet($arr, "mobile");
+        $user->qr_code = Utils::arrayGet($arr, "qr_code");
         $user->department = Utils::arrayGet($arr, "department");
         $user->order = Utils::arrayGet($arr, "order");
         $user->position = Utils::arrayGet($arr, "position");
         $user->gender = Utils::arrayGet($arr, "gender");
         $user->email = Utils::arrayGet($arr, "email");
+        $user->address = Utils::arrayGet($arr, "address");
         $user->telephone = Utils::arrayGet($arr, "telephone");
         $user->isleader = Utils::arrayGet($arr, "isleader");
-        $user->avatar_mediaid = Utils::arrayGet($arr, "avatar_mediaid");
+        $user->is_leader_in_dept = Utils::arrayGet($arr, "is_leader_in_dept");
+        $user->avatar = Utils::arrayGet($arr, "avatar");
+        $user->thumb_avatar = Utils::arrayGet($arr, "thumb_avatar");
         $user->enable = Utils::arrayGet($arr, "enable");
         $user->status = Utils::arrayGet($arr, "status");
 
