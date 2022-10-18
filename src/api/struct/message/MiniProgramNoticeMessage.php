@@ -49,7 +49,7 @@ class MiniProgramNoticeMessage
      */
     public function CheckMessageSendArgs()
     {
-        Utils::checkNotEmptyStr($this->appid, "media_id");
+        Utils::checkNotEmptyStr($this->appid, "appid");
         Utils::checkNotEmptyStr($this->title, "title");
         Utils::checkNotEmptyStr($this->title, "title");
         $size = count($this->content_item);
@@ -68,9 +68,23 @@ class MiniProgramNoticeMessage
         Utils::setIfNotNull($this->msgtype, "msgtype", $arr);
 
         $contentList = array();
-        foreach ($this->articles as $item) {
+        foreach ($this->content_item as $item) {
             $contentList[] = $item->Content2Array();
         }
-        $arr[$this->msgtype]["content_item"] = $contentList;
+
+        $contentArr = array();
+        {
+            Utils::setIfNotNull($this->appid, "appid", $contentArr);
+            Utils::setIfNotNull($this->page, "page", $contentArr);
+            Utils::setIfNotNull($this->title, "title", $contentArr);
+            Utils::setIfNotNull($this->description, "description", $contentArr);
+            Utils::setIfNotNull($this->emphasis_first_item, "emphasis_first_item", $contentArr);
+            Utils::setIfNotNull($contentList, "content_item", $contentArr);
+            Utils::setIfNotNull($this->enable_id_trans, "enable_id_trans", $contentArr);
+            Utils::setIfNotNull($this->enable_duplicate_check, "enable_duplicate_check", $contentArr);
+            Utils::setIfNotNull($this->duplicate_check_interval, "duplicate_check_interval", $contentArr);
+        }
+        Utils::setIfNotNull($contentArr, $this->msgtype, $arr);
+        // $arr[$this->msgtype]["content_item"] = $contentList;
     }
 }

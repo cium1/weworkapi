@@ -36,11 +36,11 @@ class MiniProgramContentItem
     {
         Utils::checkNotEmptyStr($this->key, "key");
         Utils::checkNotEmptyStr($this->value, "value");
-        $keyLen = mb_strlen($this->key);
+        $keyLen = mb_strlen($this->key??'');
         if ($keyLen == 0 || $keyLen > 10) {
             throw new QyApiError("invalid content length " . $keyLen);
         }
-        $valueLen=mb_strlen($this->value);
+        $valueLen=mb_strlen($this->value??'');
         if ($valueLen == 0 || $valueLen > 30) {
             throw new QyApiError("invalid content length " . $valueLen);
         }
