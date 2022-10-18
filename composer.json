@@ -1,11 +1,11 @@
 {
-  "name": "cium/weworkapi",
+  "name": "yu-yanli/weworkapi",
   "license": "MIT",
   "description": "",
   "authors": [
     {
-      "name": "cium",
-      "email": "ye91@foxmail.com"
+      "name": "yu-yanli",
+      "email": "603447409@qq.com"
     }
   ],
   "autoload": {
