@@ -3,7 +3,7 @@
 - 原始项目: [https://github.com/sbzhu/weworkapi_php](https://github.com/sbzhu/weworkapi_php) 
 - 安装方式:
 ```
-composer require cium/weworkapi
+composer require yu-yanli/weworkapi
 ```
 - Director
 ```
